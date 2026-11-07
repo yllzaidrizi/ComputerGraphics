@@ -21,7 +21,6 @@ const pointLight = new THREE.PointLight(0xffffff, 400, 0, 1.6)
 const ambientLight = new THREE.AmbientLight(0xffffff, 2.3)
 scene.add(pointLight, ambientLight)
 
-// Sun
 const sun = new THREE.Mesh(
     new THREE.SphereGeometry(2, 32, 24),
     new THREE.MeshStandardMaterial({
@@ -33,7 +32,6 @@ const sun = new THREE.Mesh(
 
 scene.add(sun)
 
-// Earth orbit
 const earthOrbit = new THREE.Object3D()
 sun.add(earthOrbit)
 
@@ -48,7 +46,6 @@ const earth = new THREE.Mesh(
 earth.position.x = 6
 earthOrbit.add(earth)
 
-// Moon orbit
 const moonOrbit = new THREE.Object3D()
 earth.add(moonOrbit)
 
@@ -63,7 +60,6 @@ const moon = new THREE.Mesh(
 moon.position.x = 1.5
 moonOrbit.add(moon)
 
-// Mars orbit
 const marsOrbit = new THREE.Object3D()
 sun.add(marsOrbit)
 
@@ -78,7 +74,6 @@ const mars = new THREE.Mesh(
 mars.position.x = 10
 marsOrbit.add(mars)
 
-// Phobos orbit
 const phobosOrbit = new THREE.Object3D()
 mars.add(phobosOrbit)
 
@@ -93,7 +88,6 @@ const phobos = new THREE.Mesh(
 phobos.position.x = 1.2
 phobosOrbit.add(phobos)
 
-// Saturn orbit
 const saturnOrbit = new THREE.Object3D()
 sun.add(saturnOrbit)
 
@@ -108,7 +102,6 @@ const saturn = new THREE.Mesh(
 saturn.position.x = 15
 saturnOrbit.add(saturn)
 
-// Saturn ring
 const ringGeometry = new THREE.RingGeometry(1.3, 2.2, 64)
 
 const ringMaterial = new THREE.MeshStandardMaterial({
@@ -121,12 +114,10 @@ const saturnRing = new THREE.Mesh(ringGeometry, ringMaterial)
 saturnRing.rotation.x = Math.PI / 2.5
 saturn.add(saturnRing)
 
-// Controls
 const control = new OrbitControls(camera, renderer.domElement)
 control.target.set(0, 0, 0)
 control.update()
 
-// Animation
 function animate() {
     requestAnimationFrame(animate)
 
@@ -150,7 +141,6 @@ function animate() {
 
 animate()
 
-// Resize
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight
     camera.updateProjectionMatrix()
